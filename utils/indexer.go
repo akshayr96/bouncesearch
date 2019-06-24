@@ -2,16 +2,20 @@ package utils
 
 import "github.com/akshayr96/bounceSearch/types"
 
+// Acts as a wrapper to the insertWord method to handle initial empty tree case
+// Takes the pointer to a ternaty tree and the word to be indexed in the tree
 func InsertWord(tree *types.Node, word string) {
 	if len(word) > 0 {
 		if tree.Data == "" {
 			insertIntoEmptySubtree(tree, word)
 		} else {
-			_insertWord(tree, word)
+			insertWord(tree, word)
 		}
 	}
 }
 
+// Indexed data into an empty subtree
+// Takes the pointer to a ternaty tree and the word to be indexed in the tree
 func insertIntoEmptySubtree(subtree *types.Node, word string) {
 	if len(word) > 0 {
 		for len(word) > 0 {
@@ -27,10 +31,10 @@ func insertIntoEmptySubtree(subtree *types.Node, word string) {
 	}
 }
 
-func _insertWord(tree *types.Node, word string) {
+//Inserts a word into the given tree pointer
+// Takes the pointer to a ternaty tree and the word to be indexed in the tree
+func insertWord(tree *types.Node, word string) {
 	for len(word) > 0 {
-		// fmt.Println(tree)
-		// fmt.Println(word)
 		if string(word[0]) > tree.Data {
 			if tree.Right == nil {
 				tree.Right = &types.Node{}
