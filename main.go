@@ -16,8 +16,10 @@ func main() {
 	utils.InsertWord(tree, "app")
 	utils.InsertWord(tree, "apple")
 	utils.InsertWord(tree, "bat")
-
 	fmt.Println(tree)
+
+	fmt.Println(utils.Parser(tree, "app"))  // Prints true
+	fmt.Println(utils.Parser(tree, "ball")) // Prints false
 
 	// log.Fatal(http.ListenAndServe(":8080", routes.Routes()))
 }

@@ -72,3 +72,29 @@ func _insertWord(tree *types.Node, word string) {
 	}
 	return
 }
+
+func Parser(tree *types.Node, word string) (exists bool) {
+	for len(word) > 0 {
+		if tree == nil {
+			return false
+		}
+		if string(word[0]) < tree.Data {
+			tree = tree.Left
+			continue
+		}
+		if string(word[0]) > tree.Data {
+			tree = tree.Right
+			continue
+		}
+		if string(word[0]) == tree.Data {
+			word = word[1:]
+			if len(word) == 0 {
+				// return partial or complete match based on end == true
+				return true
+			}
+			tree = tree.Mid
+			continue
+		}
+	}
+	return false
+}
