@@ -18,8 +18,8 @@ func main() {
 	utils.InsertWord(tree, "bat")
 	fmt.Println(tree)
 
-	fmt.Println(utils.Parser(tree, "app"))
-	fmt.Println(utils.Parser(tree, "ball"))
+	fmt.Println(types.CompleteMatch == utils.Parser(tree, "app"))
+	fmt.Println(types.CompleteMatch == utils.Parser(tree, "ball"))
 
 	// log.Fatal(http.ListenAndServe(":8080", routes.Routes()))
 }
