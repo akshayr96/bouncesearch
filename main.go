@@ -13,13 +13,18 @@ import (
 
 func main() {
 	tree := &types.Node{}
+
+	//Inserting words into a ternary tree
 	utils.InsertWord(tree, "app")
 	utils.InsertWord(tree, "apple")
 	utils.InsertWord(tree, "bat")
-	fmt.Println(tree)
 
+	// Searching for a words in the tree
 	fmt.Println(types.CompleteMatch == utils.Parser(tree, "app"))
 	fmt.Println(types.CompleteMatch == utils.Parser(tree, "ball"))
+
+	//Getting the Levenshtien distance between two words
+	fmt.Println(utils.LevenshteinDistance("app", "map"))
 
 	// log.Fatal(http.ListenAndServe(":8080", routes.Routes()))
 }
