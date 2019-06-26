@@ -1,7 +1,8 @@
 package utils
 
 // Computes the Levenshtien distance between two strings
-//
+// Takes two words to which the Levenshtein distance has to be computed
+// Returns the Levenshtein distance between the two string
 func LevenshteinDistance(wordOne, wordTwo string) (distance int) {
 	if wordOne == "" {
 		return len(wordTwo)
