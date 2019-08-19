@@ -7,6 +7,7 @@ import (
 
 	"fmt"
 
+	"github.com/akshayr96/bounceSearch/database"
 	"github.com/akshayr96/bounceSearch/types"
 	"github.com/akshayr96/bounceSearch/utils"
 )
@@ -27,4 +28,9 @@ func main() {
 	fmt.Println(utils.LevenshteinDistance("app", "map"))
 
 	// log.Fatal(http.ListenAndServe(":8080", routes.Routes()))
+
+	//API Example
+	conn := database.Connect("RandomApp")
+	users := conn.Collection("users")
+	users.Me()
 }
