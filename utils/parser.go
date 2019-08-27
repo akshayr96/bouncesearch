@@ -1,6 +1,8 @@
 package utils
 
-import "github.com/akshayr96/bounceSearch/types"
+import (
+	"github.com/akshayr96/bounceSearch/types"
+)
 
 // Checks if the given word is indexed in the given tree
 // Takes the pointer to a ternaty tree and the word to be searched in the tree
