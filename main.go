@@ -27,6 +27,8 @@ func main() {
 	fmt.Println(types.PartialMatch == utils.Parser(tree, "ap"))
 	fmt.Println(types.NoMatch == utils.Parser(tree, "x"))
 
+	utils.WriteTree(tree, "vbiview", "users")
+
 	//Getting the Levenshtien distance between two words
 	fmt.Println(utils.LevenshteinDistance("app", "map"))
 
