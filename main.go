@@ -16,10 +16,10 @@ func main() {
 	tree := &types.Node{}
 
 	//Inserting words into a ternary tree
-	utils.InsertWord(tree, "app", "foo", 5.5)
-	utils.InsertWord(tree, "app", "bar", 5.4)
-	utils.InsertWord(tree, "apple", "efwefwef", 1.0)
-	utils.InsertWord(tree, "bat", "fvsev", 0.5)
+	utils.InsertWord(tree, "app", "6516516516", 5.5)
+	utils.InsertWord(tree, "app", "561919189", 5.4)
+	utils.InsertWord(tree, "apple", "161641640", 1.0)
+	utils.InsertWord(tree, "bat", "56316516516", 0.5)
 
 	// Searching for a words in the tree
 	fmt.Println(types.CompleteMatch == utils.Parser(tree, "app"))
