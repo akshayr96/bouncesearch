@@ -30,8 +30,8 @@ func insertIntoEmptySubtree(subtree *types.Node, word string, id string, weight 
 			word = word[1:]
 		}
 		subtree.End = true
-		occurance := types.NodeOccurance{Index: id, Weight: weight}
-		subtree.Occurances = append(subtree.Occurances, occurance)
+		subtree.Occurances = make(types.NodeOccurances)
+		subtree.Occurances[id] = types.NodeOccurance{Index: id, Weight: weight, Frequency: 1}
 	}
 }
 
@@ -72,9 +72,14 @@ func insertWord(tree *types.Node, word string, id string, weight float32) {
 					tree = tree.Mid
 				}
 			} else {
+				var frequency int
+				if tree.Occurances[id].Index == "" {
+					frequency = 1
+				} else {
+					frequency = tree.Occurances[id].Frequency + 1
+				}
 				tree.End = true
-				occurance := types.NodeOccurance{Index: id, Weight: weight}
-				tree.Occurances = append(tree.Occurances, occurance)
+				tree.Occurances[id] = types.NodeOccurance{Index: id, Weight: weight, Frequency: frequency}
 			}
 		}
 	}

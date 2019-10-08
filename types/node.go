@@ -1,11 +1,12 @@
 package types
 
 type NodeOccurance struct {
-	Index  string
-	Weight float32
+	Index     string
+	Weight    float32
+	Frequency int
 }
 
-type NodeOccurances []NodeOccurance
+type NodeOccurances map[string]NodeOccurance
 
 // Tree Node Struct
 type Node struct {

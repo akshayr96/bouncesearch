@@ -23,7 +23,9 @@ func main() {
 
 	// Searching for a words in the tree
 	fmt.Println(types.CompleteMatch == utils.Parser(tree, "app"))
-	fmt.Println(types.CompleteMatch == utils.Parser(tree, "ball"))
+	fmt.Println(types.NoMatch == utils.Parser(tree, "ball"))
+	fmt.Println(types.PartialMatch == utils.Parser(tree, "ap"))
+	fmt.Println(types.NoMatch == utils.Parser(tree, "x"))
 
 	//Getting the Levenshtien distance between two words
 	fmt.Println(utils.LevenshteinDistance("app", "map"))
