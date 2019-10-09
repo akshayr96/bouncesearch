@@ -2,7 +2,7 @@ package types
 
 type NodeOccurance struct {
 	Index     string
-	Weight    float32
+	Weights   []float32
 	Frequency int
 }
 
