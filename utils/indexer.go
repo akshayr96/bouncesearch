@@ -43,7 +43,7 @@ func insertIntoEmptySubtree(subtree *types.Node, word string, id string, weight 
 //Inserts a word into the given tree pointer
 // Takes the pointer to a ternaty tree and the word to be indexed in the tree
 func insertWord(tree *types.Node, word string, id string, weight float32) {
-	weightString := fmt.Sprintf("%f", weight)
+	weightString := fmt.Sprintf("%f", weight) // stringifies the weight
 	for len(word) > 0 {
 		if string(word[0]) > tree.Data {
 			if tree.Right == nil {
@@ -79,9 +79,11 @@ func insertWord(tree *types.Node, word string, id string, weight float32) {
 				}
 			} else {
 				if tree.Occurances[id].Index == "" {
+					if len(tree.Occurances) == 0 {
+						tree.Occurances = make(types.NodeOccurances)
+					}
 					treeNodeWeights := make(types.TreeNodeWeights)
 					treeNodeWeights[weightString] = types.TreeNodeWeight{Weight: weight, Frequency: 1}
-					tree.Occurances = make(types.NodeOccurances)
 					tree.Occurances[id] = types.NodeOccurance{Index: id, TreeNodeWeights: treeNodeWeights}
 				} else {
 					if tree.Occurances[id].TreeNodeWeights[weightString].Weight == weight {
