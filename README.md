@@ -23,8 +23,8 @@ Just for the sake of simplicity, the terminologies are made much similar to Mong
 
 - [x] Create tree generating and parsing functions
 - [x] Add Levenshtein Distance computing function
+- [x] Add Unit Test Cases
+- [x] Implement the File write Layer to persist data 
 - [ ] Create the API handler methods
-- [ ] Implement the File write Layer to persist data 
 - [ ] Create REST APIs to accept queries
 - [ ] Add Message Queue to queue the request
-- [ ] Add Unit Test Cases
