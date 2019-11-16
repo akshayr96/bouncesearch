@@ -1,18 +1,47 @@
 package database
 
-func Create(databaseName string) {
+import (
+	"errors"
 
-}
+	"github.com/akshayr96/bounceSearch/constants"
+	"github.com/akshayr96/bounceSearch/provider"
+)
 
-func Connect(databaseName string) Collections {
-	if true { // check if such a collection exists
-		return Collections{databaseName}
+// @todo: add validations to database names in all functions
+
+// Created the database
+// Takes the database name and returns the error message if any
+func Create(databaseName string) error {
+	if provider.CheckIfDatabaseExists(databaseName) {
+		return errors.New(constants.DBAlreadyExistsError)
 	} else {
-		//return error
-		return Collections{"Error"}
+		err := provider.CreateDatabase(databaseName)
+		if err != nil {
+			return errors.New(constants.UnableToCreateDB)
+		}
+		return nil
 	}
 }
 
-func Drop(databaseName string) {
+//Creates a connection to a database
+//Takes the database name and returns connection object or error message
+func Connect(databaseName string) (Collections, error) {
+	if provider.CheckIfDatabaseExists(databaseName) {
+		return Collections{databaseName}, nil
+	} else {
+		return Collections{""}, errors.New(constants.DBNotFoundError)
+	}
+}
 
+//Drops a database
+//Takes the database name and returns error if any
+func Drop(databaseName string) error {
+	if provider.CheckIfDatabaseExists(databaseName) {
+		err := provider.DropDatabase(databaseName)
+		if err != nil {
+			return errors.New(constants.ErrorDroppingDatabase)
+		}
+		return nil
+	}
+	return errors.New(constants.DBNotFoundError)
 }

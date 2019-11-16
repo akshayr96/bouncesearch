@@ -1,10 +1,42 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/akshayr96/bounceSearch/database"
+)
 
 // "log"
 // "net/http"
 
 func main() {
-	fmt.Println("Under construction")
+	//create database
+	err := database.Create("random_app")
+	if err == nil {
+		fmt.Println("Created")
+	} else {
+		fmt.Println(err)
+	}
+
+	//connect to database
+	conn, err := database.Connect("random_app")
+	if err == nil {
+		conn.Collection("users")
+		users := conn.Collection("users")
+		users.Me()
+	} else {
+		fmt.Println(err)
+	}
+
+	//drop database
+	err = database.Drop("random_app")
+	if err == nil {
+		fmt.Println("Dropped the database")
+	} else {
+		fmt.Println(err)
+	}
+
 }
+
+// API Example
+// log.Fatal(http.ListenAndServe(":8080", routes.Routes()))
