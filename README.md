@@ -40,12 +40,12 @@ if err == nil  {
 conn, err := bounceSearch.Connect("rick_and_morty")
 if err == nil {
   //create a schema
-  userSchema := bounceSearch.types.Schema{
+  charactersSchema := bounceSearch.types.Schema{
     "name": bounceSearch.types.AttributeMeta{defaultValue: "", Weight: 1.0, Optional: false},
     "description":  bounceSearch.AttributeMeta{defaultValue: "", Weight: 1.0, Optional: false},
   }
-	//access / create a collection a name and its schema
-  users := conn.Collection("characters", userSchema)
+  //access or create a collection
+  users := conn.Collection("characters", charactersSchema)
 }
 //delete a collection
 err = conn.Delete("characters")
