@@ -51,10 +51,3 @@ func TestLevenshtein(t *testing.T) {
 		t.Error("Levenshtein test failed")
 	}
 }
-
-// log.Fatal(http.ListenAndServe(":8080", routes.Routes()))
-
-//API Example
-// conn := database.Connect("RandomApp")
-// users := conn.Collection("users")
-// users.Me()
