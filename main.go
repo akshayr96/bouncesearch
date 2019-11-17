@@ -21,9 +21,8 @@ func main() {
 	//connect to database
 	conn, err := database.Connect("random_app")
 	if err == nil {
-		conn.Collection("users")
 		users := conn.Collection("users")
-		users.Me()
+		users.PrintStats()
 	} else {
 		fmt.Println(err)
 	}
