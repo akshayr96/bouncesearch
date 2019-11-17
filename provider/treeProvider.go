@@ -20,7 +20,9 @@ func WriteTree(tree *types.Node, databaseName string, collectionName string) {
 }
 
 //Reads the given tree from its file
-func ReadTree(fileName string) types.Node {
+func ReadTree(databaseName string, collectionName string) types.Node {
+	filePath := path.Join(constants.DumpsDir, "storage", databaseName)
+	fileName := path.Join(filePath, collectionName+".json")
 	file := loadContent(fileName)
 	tree := types.Node{}
 	_ = json.Unmarshal([]byte(file), &tree)
@@ -43,4 +45,16 @@ func CreateDatabase(databaseName string) error {
 func DropDatabase(databaseName string) error {
 	directoryPath := path.Join(constants.DumpsDir, "storage", databaseName)
 	return deleteFolder(directoryPath)
+}
+
+func CheckIfCollectionExists(databaseName string, collectionName string) bool {
+	filePath := path.Join(constants.DumpsDir, "storage", databaseName)
+	fileName := path.Join(filePath, collectionName+".json")
+	return checkIfDirectoryExists(fileName)
+}
+
+func DeleteCollection(databaseName string, collectionName string) error {
+	filePath := path.Join(constants.DumpsDir, "storage", databaseName)
+	fileName := path.Join(filePath, collectionName+".json")
+	return deleteFile(fileName)
 }

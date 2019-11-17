@@ -24,7 +24,7 @@ func (collection Collection) Search(query string) {
 
 //Deletes the current collection
 func (collection Collection) Delete(query string) {
-
+	//@todo: reindex upon delete
 }
 
 func (collection Collection) PrintStats() {
