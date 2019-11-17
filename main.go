@@ -7,9 +7,6 @@ import (
 	"github.com/akshayr96/bounceSearch/types"
 )
 
-// "log"
-// "net/http"
-
 func main() {
 	//create database
 	err := database.Create("random_app")
@@ -41,7 +38,6 @@ func main() {
 		fmt.Println(err)
 	}
 
+	// API Example
+	// log.Fatal(http.ListenAndServe(":8080", routes.Routes()))
 }
-
-// API Example
-// log.Fatal(http.ListenAndServe(":8080", routes.Routes()))
