@@ -18,6 +18,50 @@ Just for the sake of simplicity, the terminologies are made much similar to Mong
 
 * On search return either top scored paginated list of collection that matched the search phrase or suggested similar search phrase with the closest levestian distance in the collection if no results are found,
 
+# Getting Started
+
+**Database API**
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/akshayr96/bounceSearch"
+)
+
+//create a database
+	err := bounceSearch.Create("rick_and_morty")
+	if err == nil  {
+			//connect to the database
+			conn, err := bounceSearch.Connect("rick_and_morty")
+		} else {
+		//Handle error
+	}
+
+```
+
+**Collections API**
+```go
+	conn, err := bounceSearch.Connect("rick_and_morty")
+	if err == nil {
+		//create a schema
+		userSchema := bounceSearch.types.Schema{
+			"name": bounceSearch.types.AttributeMeta{defaultValue: "", Weight: 1.0, Optional: false},
+			"description":  bounceSearch.AttributeMeta{defaultValue: "", Weight: 1.0, Optional: false},
+		}
+		//access / create a collection a name and its schema
+		users := conn.Collection("characters", userSchema)
+	}else{
+		//Handle error
+	}
+
+	//delete a collection
+	err = conn.Delete("characters")
+	if err {
+		//handle error
+	}
+```
 
 # Tasks to be completed
 
