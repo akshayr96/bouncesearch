@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/akshayr96/bounceSearch/database"
+	"github.com/akshayr96/bounceSearch/types"
 )
 
 // "log"
@@ -21,7 +22,12 @@ func main() {
 	//connect to database
 	conn, err := database.Connect("random_app")
 	if err == nil {
-		users := conn.Collection("users")
+		//user schema created
+		userSchema := types.Schema{
+			"description": types.AttributeMeta{Weight: 1.0, Optional: false},
+			"reportName":  types.AttributeMeta{Weight: 1.0, Optional: false},
+		}
+		users := conn.Collection("users", userSchema)
 		users.PrintStats()
 	} else {
 		fmt.Println(err)

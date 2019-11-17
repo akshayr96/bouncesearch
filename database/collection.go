@@ -1,9 +1,15 @@
 package database
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/akshayr96/bounceSearch/types"
+)
 
 type Collection struct {
-	databaseName, name string
+	databaseName string
+	name         string
+	schema       types.Schema
 }
 
 //Inserts a document into a collection
@@ -23,4 +29,5 @@ func (collection Collection) Delete(query string) {
 
 func (collection Collection) PrintStats() {
 	fmt.Println("stats: Connected to", collection.databaseName, "database,", collection.name, "collection")
+	fmt.Println(collection.schema)
 }
