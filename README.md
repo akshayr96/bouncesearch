@@ -60,6 +60,7 @@ charactersSchema := bounceSearch.types.Schema{
 
 
 **Collections API**
+
 Create collection
 ```go
 characters := conn.Collection("characters", charactersSchema)
