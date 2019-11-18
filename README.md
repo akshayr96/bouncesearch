@@ -21,6 +21,7 @@ Just for the sake of simplicity, the terminologies are made much similar to Mong
 # Getting Started
 
 **Database API**
+
 Create database
 ```go
 package main
@@ -45,6 +46,8 @@ Drop database
 err := database.Drop("rick_and_morty")
 ```
 
+
+
 **Schema Definition**
 ```go
 //create a schema
@@ -53,6 +56,8 @@ charactersSchema := bounceSearch.types.Schema{
   "description":  bounceSearch.AttributeMeta{defaultValue: "", Weight: 1.0, Optional: false},
 }
  ```
+
+
 
 **Collections API**
 Create collection
