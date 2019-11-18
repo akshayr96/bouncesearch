@@ -21,6 +21,7 @@ Just for the sake of simplicity, the terminologies are made much similar to Mong
 # Getting Started
 
 **Database API**
+Create database
 ```go
 package main
 
@@ -28,12 +29,20 @@ import "github.com/akshayr96/bounceSearch"
 
 //create a database
 err := bounceSearch.Create("rick_and_morty")
+```
 
+Connect to a database
+```go
 if err == nil  {
   //connect to the database
   conn, err := bounceSearch.Connect("rick_and_morty")
 }
 
+```
+
+Drop database
+```go
+err := database.Drop("rick_and_morty")
 ```
 
 **Schema Definition**
@@ -46,11 +55,13 @@ charactersSchema := bounceSearch.types.Schema{
  ```
 
 **Collections API**
+Create collection
 ```go
-//access or create a collection
 characters := conn.Collection("characters", charactersSchema)
+```
 
-//delete a collection
+Delete collection
+```go
 err = conn.Delete("characters")
 ```
 
