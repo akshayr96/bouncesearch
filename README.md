@@ -35,18 +35,20 @@ if err == nil  {
 
 ```
 
-**Collections API**
+**Schema Definition**
 ```go
-conn, err := bounceSearch.Connect("rick_and_morty")
-if err == nil {
-  //create a schema
+//create a schema
   charactersSchema := bounceSearch.types.Schema{
     "name": bounceSearch.types.AttributeMeta{defaultValue: "", Weight: 1.0, Optional: false},
     "description":  bounceSearch.AttributeMeta{defaultValue: "", Weight: 1.0, Optional: false},
   }
-  //access or create a collection
-  users := conn.Collection("characters", charactersSchema)
-}
+ ```
+
+**Collections API**
+```go
+//access or create a collection
+characters := conn.Collection("characters", charactersSchema)
+
 //delete a collection
 err = conn.Delete("characters")
 ```
@@ -57,6 +59,6 @@ err = conn.Delete("characters")
 - [x] Add Levenshtein Distance computing function
 - [x] Add Unit Test Cases
 - [x] Implement the File write Layer to persist data 
-- [ ] Create the API handler methods
+- [ ] Create the handlers for indexing and searching
 - [ ] Create REST APIs to accept queries
 - [ ] Add Message Queue to queue the request
