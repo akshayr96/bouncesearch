@@ -17,4 +17,5 @@ const (
 	ErrorDroppingDatabase   = "Error dropping the database"
 	CollectionDoesntExist   = "No such collection exists"
 	ErrorDeletingCollection = "Unable to delete collection"
+	InvalidRecord           = "Invalid Record entry attempted"
 )

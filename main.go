@@ -11,7 +11,7 @@ func main() {
 	//create database
 	err := database.Create("random_app")
 	if err == nil {
-		fmt.Println("Created")
+		fmt.Println("Database Created")
 	} else {
 		fmt.Println(err)
 	}
@@ -20,14 +20,27 @@ func main() {
 	conn, err := database.Connect("random_app")
 	if err == nil {
 		//user schema created
-		userSchema := types.Schema{
-			"description": types.AttributeMeta{Weight: 1.0, Optional: false},
-			"reportName":  types.AttributeMeta{Weight: 1.0, Optional: false},
+		characterSchema := types.Schema{
+			"characterName": types.AttributeMeta{Weight: 1.0, Optional: false},
+			"description":   types.AttributeMeta{Weight: 1.0, Optional: false},
 		}
-		users := conn.Collection("users", userSchema)
-		users.PrintStats()
+		characters := conn.Collection("characters", characterSchema)
+
+		newCharacter := types.Record{
+			"characterName": "foo",
+			"description":   "test",
+		}
+
+		characters.InsertOne(newCharacter, "1")
 	} else {
 		fmt.Println(err)
+	}
+
+	err = conn.Delete("characters")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Deleted the collection")
 	}
 
 	//drop database

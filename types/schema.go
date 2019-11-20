@@ -7,3 +7,5 @@ type AttributeMeta struct {
 	Weight       float32
 	Optional     bool
 }
+
+type Record map[string]string

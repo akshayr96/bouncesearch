@@ -1,9 +1,12 @@
 package database
 
 import (
+	"errors"
 	"fmt"
 
+	"github.com/akshayr96/bounceSearch/constants"
 	"github.com/akshayr96/bounceSearch/types"
+	"github.com/akshayr96/bounceSearch/utilities"
 )
 
 type Collection struct {
@@ -13,8 +16,13 @@ type Collection struct {
 }
 
 //Inserts a document into a collection
-func (collection Collection) InsertOne(record string, id string) {
-
+func (collection Collection) InsertOne(record types.Record, id string) error {
+	if utilities.ValidateSchema(collection.schema, record) {
+		fmt.Println("Valid Schema")
+	} else {
+		return errors.New(constants.InvalidRecord)
+	}
+	return nil
 }
 
 //Finds a phrase in a collection
@@ -29,5 +37,5 @@ func (collection Collection) Delete(query string) {
 
 func (collection Collection) PrintStats() {
 	fmt.Println("stats: Connected to", collection.databaseName, "database,", collection.name, "collection")
-	fmt.Println(collection.schema)
+
 }
