@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 
 	"github.com/akshayr96/bounceSearch/core"
@@ -15,8 +16,8 @@ func TestIndexerAndParser(t *testing.T) {
 	testWords := []string{"plumbus", "eyeholeman", "morty", "glibglob", "squanchy"}
 
 	//Indexing words
-	for _, word := range testWords {
-		core.InsertWord(tree, word, "1", 1.0)
+	for i, word := range testWords {
+		core.InsertWord(tree, word, strconv.Itoa(i), 1.0)
 	}
 
 	//writes the tree file for reference
