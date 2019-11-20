@@ -1,4 +1,4 @@
-package utils
+package core
 
 // Computes the Levenshtien distance between two strings
 // Takes two words to which the Levenshtein distance has to be computed
