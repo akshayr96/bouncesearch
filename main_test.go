@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/akshayr96/bounceSearch/provider"
@@ -28,6 +29,8 @@ func TestIndexerAndParser(t *testing.T) {
 		}
 	}
 
+	fmt.Println("PASS: Complete Match test")
+
 	//tests for partial match
 	partialMatchWords := []string{"plumb", "eye", "mort", "glib", "squanch"}
 	for _, word := range partialMatchWords {
@@ -35,6 +38,8 @@ func TestIndexerAndParser(t *testing.T) {
 			t.Errorf("Partial match test failed for the word %s", word)
 		}
 	}
+
+	fmt.Println("PASS: Partial Match test")
 
 	//tests for no match
 	noMatchWords := []string{"froopyland", "summer", "birdperson", "fakedoors", "shmoopydoop"}
@@ -44,10 +49,13 @@ func TestIndexerAndParser(t *testing.T) {
 		}
 	}
 
+	fmt.Println("PASS: No Match test")
+
 }
 
 func TestLevenshtein(t *testing.T) {
 	if utils.LevenshteinDistance("app", "map") != 2 {
 		t.Error("Levenshtein test failed")
 	}
+	fmt.Println("PASS: Levenshtein Test")
 }
